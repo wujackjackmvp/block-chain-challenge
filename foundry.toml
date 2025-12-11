@@ -2,6 +2,13 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+# 启用 .env 文件
+dotenv = ".env"
+
+# 指定部署输出目录
+cache_path = "cache"
+broadcast = "broadcast"
+deployments = "deployments"
 
 fs_permissions = [
     { access = "write", path = "./deployments" }
@@ -12,6 +19,5 @@ sepolia = "${SEPOLIA_RPC_URL}"
 polygon = "${POLYGON_RPC_URL}"
 local = "http://127.0.0.1:8545"
 optimism = "${OPTIMISM_RPC_URL}"
-
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
