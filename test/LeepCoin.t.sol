@@ -14,7 +14,7 @@ contract LeepCoinTest is Test {
     uint256 public initialSupply = 1000000; // 100W ether
 
     function setUp() public {
-        vm.prank(owner);
+        vm.prank(owner); // 创建者
         leepCoin = new LeepCoin(initialSupply);
     }
 
@@ -39,6 +39,7 @@ contract LeepCoinTest is Test {
         
         vm.prank(owner);
         bool success = leepCoin.transfer(user1, transferAmount);
+        console.log(leepCoin.balanceOf(owner));
         
         assertTrue(success);
         assertEq(leepCoin.balanceOf(owner), initialSupply * 10 ** 18 - transferAmount);
@@ -72,7 +73,7 @@ contract LeepCoinTest is Test {
         assertEq(leepCoin.balanceOf(owner), initialSupply * 10 ** 18 - transferAmount);
         assertEq(leepCoin.balanceOf(user2), transferAmount);
         assertEq(leepCoin.allowance(owner, user1), 0);
-    }   
+    }
 
     function testTransferFromInsufficientAllowance() public {
         uint256 approveAmount = 100 * 10 ** 18;

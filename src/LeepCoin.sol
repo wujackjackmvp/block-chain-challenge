@@ -8,10 +8,15 @@ contract LeepCoin {
     uint8 public decimals = 18;
     uint256 public totalSupply; // 100W * 10 18次方wei
 
-    // 余额映射 {owner: 余额}
+    // 余额映射 
+    // mapping(用户1 => 余额) mapping(用户2 => 余额) mapping(用户3 => 余额)
     mapping(address => uint256) public balanceOf;
-    // 授权映射 {}
-    mapping(address => mapping(address => uint256)) public allowance; // 谁授权给谁多少额度
+    // 授权映射（谁授权给谁多少额度）
+    //  mapping(用户1 => mapping(机构1 => 授权额度)) 
+    //  mapping(用户1 => mapping(机构2 => 授权额度)) 
+    //  mapping(用户2 => mapping(机构1 => 授权额度)) 
+    //  mapping(用户2 => mapping(机构2 => 授权额度)) 
+    mapping(address => mapping(address => uint256)) public allowance;
 
     // 事件定义
     event Transfer(address indexed from, address indexed to, uint256 value);

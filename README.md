@@ -37,6 +37,8 @@ forge script script/MyERC20.s.sol:ERC20Script --rpc-url local --broadcast
 ## 生成abi到某一个路径下的命令
 forge inspect src/MyERC20.sol:MyERC20 abi > ./front-project/demo/src/abis/MyERC20.json --json
 
+forge inspect src/PayableDemo.sol:PayableDemo abi > ./front-project/viem-front/app/contracts/PayableDemo.json --json
+
 ## 部署LeepCoin
 forge script script/LeepCoin.s.sol:LeepCoinScript --broadcast
 
@@ -45,3 +47,6 @@ forge script script/Exchange.s.sol:ExchangeScript --broadcast
 
 ## 同时部署两个合约
 forge script script/DeployAll.s.sol:DeployAllScript --broadcast
+
+## 同时部署两个合约
+forge script script/DeployPayableDemo.s.sol:DeployPayableDemo --rpc-url http://127.0.0.1:8545 --broadcast

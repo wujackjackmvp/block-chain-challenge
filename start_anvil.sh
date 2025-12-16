@@ -7,4 +7,4 @@ echo "使用固定助记词启动 Anvil..."
 echo "助记词: $ANVIL_MNEMONIC"
 
 # 使用环境变量启动 Anvil
-anvil --chain-id 1337 -m "$ANVIL_MNEMONIC"
+anvil -m "$ANVIL_MNEMONIC"

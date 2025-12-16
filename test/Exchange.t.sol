@@ -40,6 +40,7 @@ contract ExchangeTest is Test {
         assertEq(exchange.orderCount(), 0);
     }
 
+    // 存款
     function testDepositEther() public {
         uint256 depositAmount = 1 ether;
         

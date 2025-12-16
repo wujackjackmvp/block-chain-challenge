@@ -3,9 +3,7 @@ cache/
 out/
 
 # Ignores development broadcast logs
-/front-project
-/deployments
-/broadcast
+front-project
 # Docs
 docs/
 
