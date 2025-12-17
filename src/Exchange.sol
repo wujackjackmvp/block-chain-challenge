@@ -7,6 +7,7 @@ contract Exchange {
     address public feeAccount;
     uint256 public feePercent; // 费率
     address constant ETHER = address(0);
+    string public haha;
     
     struct _Order {
         uint256 id; // 订单唯一标识符
@@ -62,6 +63,14 @@ contract Exchange {
         tokens[ETHER][msg.sender] -= _amount;
         payable(msg.sender).transfer(_amount);
         emit Withdraw(ETHER, msg.sender,_amount, tokens[ETHER][msg.sender]);
+    }
+
+    function testWrite (string memory text) public {
+        haha = text;
+    }
+
+    function testRead () public view returns (string memory) {
+        return haha;
     }
     
     // 提取其他币

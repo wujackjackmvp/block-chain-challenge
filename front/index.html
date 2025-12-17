@@ -191,7 +191,6 @@
                 // Exchange合约交互
                 const contractAddress = '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9'; // 替换为你的合约地址
                 const contractABI = [
-                    // 替换为你的合约ABI
                     {
                         "type": "constructor",
                         "inputs": [
@@ -311,6 +310,19 @@
                     },
                     {
                         "type": "function",
+                        "name": "haha",
+                        "inputs": [],
+                        "outputs": [
+                            {
+                                "name": "",
+                                "type": "string",
+                                "internalType": "string"
+                            }
+                        ],
+                        "stateMutability": "view"
+                    },
+                    {
+                        "type": "function",
                         "name": "makeOrder",
                         "inputs": [
                             {
@@ -403,6 +415,32 @@
                             }
                         ],
                         "stateMutability": "view"
+                    },
+                    {
+                        "type": "function",
+                        "name": "testRead",
+                        "inputs": [],
+                        "outputs": [
+                            {
+                                "name": "",
+                                "type": "string",
+                                "internalType": "string"
+                            }
+                        ],
+                        "stateMutability": "view"
+                    },
+                    {
+                        "type": "function",
+                        "name": "testWrite",
+                        "inputs": [
+                            {
+                                "name": "text",
+                                "type": "string",
+                                "internalType": "string"
+                            }
+                        ],
+                        "outputs": [],
+                        "stateMutability": "nonpayable"
                     },
                     {
                         "type": "function",
@@ -674,7 +712,8 @@
                         ],
                         "anonymous": false
                     }
-                ];
+                ]
+
                 console.log('contractAddress', contractAddress)
                 console.log('contractABI', contractABI)
                 console.log('signer', signer)
@@ -944,7 +983,8 @@
 
                 console.log('coinContract', coinContract)
                 document.getElementById('readContract').addEventListener('click', async () => {
-                    const value = await contract.balanceOf(coinContractAddress, userAddress);
+                    // const value = await contract.balanceOf(coinContractAddress, userAddress);
+                    const value = await contract.testRead();
                     // const value = '0000'
                     // const feeAccount = await contract.feeAccount();
                     // console.log('feeAccount:', feeAccount);
@@ -964,9 +1004,10 @@
                         alert('授权失败：' + error.message);
                     }
                 });
-                
+
                 document.getElementById('writeContract').addEventListener('click', async () => {
-                    const tx = await contract.depositToken(userAddress, 1);
+                    // const tx = await contract.depositToken(userAddress, 1);
+                    const tx = await contract.testWrite('diss 薯薯');
                     console.log('tx', tx)
                     await tx.wait();
                     document.getElementById('writeResult').textContent = `写入成功，交易哈希：${tx.hash}`;
